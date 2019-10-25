@@ -65,14 +65,15 @@ FPSClock = pygame.time.Clock()
 grass_tile = load_tile()
 running = True
 
-# Main loop
+# Main loop.
 while running == True:
-    # Quit checker
+    # Quit checker.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     # Checks if a key has been pressed and calls the relevant function.
+    # 4 reloads tile to reset colour changes.
     keys = pygame.key.get_pressed()
     if keys[K_1]:
         autumn(grass_tile)
@@ -83,15 +84,17 @@ while running == True:
     if keys[K_4]:
         grass_tile = load_tile()
 
-    # Drawing tile, printing text, and updating window.
+    # Clear screen and draw tile.
     window_main.fill((200, 200, 200))
     pygame.Surface.blit(window_main, grass_tile, (280, 50))
 
+    # Display help messages.
     window_main.blit(message1, message1_rect)
     window_main.blit(message2, message2_rect)
     window_main.blit(message3, message3_rect)
     window_main.blit(message4, message4_rect)
 
+    # FPS tick and display update.
     FPSClock.tick(FPS)
     pygame.display.update()
 
